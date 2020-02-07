@@ -1,0 +1,36 @@
+.top {
+    font-size: 35px ;
+    text-align: center;
+    padding: 16px;
+    background-color: #333333;
+    color: white;
+}
+.login-form, .create-account {
+    width: 300px;
+    margin: 0 auto;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+.login-form, .create-account h1 {
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+.login-form input[type="password"],
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    margin-bottom: 15px;
+    box-sizing:border-box;
+}
+.login-form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: gray;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}

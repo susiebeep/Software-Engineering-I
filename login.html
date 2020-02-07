@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Home Page</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+
+<div class="top">
+    TaskBunny
+</div>
+
+<div class="login-form">
+    <h1>Login Form</h1>
+    <form action="auth" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit">
+    </form>
+</div>
+
+
+<div class="create-account">
+    <h1>Create Account</h1>
+    <h2 id="success" style="display: none">Success</h2>
+    <form action="createAccount" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="submit">
+    </form>
+</div>
+<script type="text/javascript">
+    let path = window.location.href;
+    console.log(path);
+    if (path.indexOf("success=true") !== -1) {
+        document.getElementById("success").style.display = "block";
+    }
+</script>
+</body>
+</html>
