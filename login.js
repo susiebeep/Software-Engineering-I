@@ -23,8 +23,18 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.set('port', process.argv[2]);
 
+// Set the assumed folder for static documents to /public.
+app.use('/static', express.static('./public'));
+
+// Include express-handlebars, set it as the default engine for interpreting
+// .handlebars files, and set the assumed file type to .handlebars.
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
+
 app.get('/', function(request, response) {
-    response.sendFile(path.join(__dirname + '/login.html'));
+    response.render('login');
 });
 
 
@@ -76,6 +86,12 @@ app.post('/createAccount', function(req, res) {
         }
     });
 });
+
+
+app.get('/view-jobs', function(request, response) {
+    response.render('view-jobs');
+});
+
 
 //boilerplate 404 code
 app.use(function(req,res){
