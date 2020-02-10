@@ -1,10 +1,26 @@
-.top {
-    font-size: 35px ;
-    text-align: center;
-    padding: 16px;
-    background-color: #333333;
-    color: white;
+/*******************************************************************************
+** Section: General Styling
+*******************************************************************************/
+body {
+	margin: 0;
 }
+
+table, td, th {
+	border-style: solid;
+	border-width: thin;
+}
+
+table {
+    background-color: white;
+	margin-top: 20px;
+	margin-left: 1%;
+	width: 98%;
+}
+
+
+/*******************************************************************************
+** Section: Log in and Account Creation
+*******************************************************************************/
 .login-form, .create-account {
     width: 300px;
     margin: 0 auto;
@@ -33,4 +49,108 @@
     cursor: pointer;
     font-weight: bold;
     color: white;
+}
+
+
+/*******************************************************************************
+** Section: Navigation Bar Styling
+*******************************************************************************/
+.navigationBar {
+	background-color: #333333;
+
+	/* Fix the navigation bar to the top of the page while scrolling. */
+	position: fixed; 
+	top: 0;
+
+	/* Make the navigation bar fill the top of the page. */
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+	/* Define the text and border colors to be inherited. */
+	color: white;
+	border-color: white;
+}
+
+/* Visual styling for the navigation bar's links. */
+.navigationBar a {
+	display: block;
+
+	text-align: center;
+	color: inherit;
+	text-decoration: none;
+	font-family: Verdana;
+
+	border-color: inherit;
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+/* Highlight links when they are moused over. */
+.navigationBar a:hover {
+	background-color: #ded410;
+}
+
+/* Align all top level links to the right of the navigation bar. */
+.topLevelLink {
+	float: right;
+	border-left: 1px solid;
+}
+
+/* Give all drop down links top borders. */
+.dropDownContent a {
+	float: none;
+	border-top: 1px solid;
+}
+
+/* Treat the home icon as an exception and align it to the left. */
+#homeIcon {
+	float: left;
+	border-right: 1px solid;
+
+	font-family: Verdana;
+}
+
+/* Align the drop down list to the right of the navigation bar. */
+.dropDownContainer {
+	float: right;
+	background-color: inherit;
+}
+
+/* Visual styling for the drop down list's header. */
+.dropDownHeader {
+	display: block;
+
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	font-family: Verdana;
+
+	border-left: 1px solid;
+	border-right: 1px solid;
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 40px;
+	padding-left: 40px;
+}
+
+/* Highlight the dropDownHeader when hovered over. */
+.dropDownHeader:hover {
+	background-color: #ded410;
+}
+
+/* Styling for the div containing the hidden drop down content. */
+.dropDownContent {
+	display: none;
+	position: absolute;
+	background-color: inherit;
+}
+
+/* Display the dropDownContent when the drop down navigation is moused over. */
+.dropDownContainer:hover .dropDownContent {
+	display: block;
 }

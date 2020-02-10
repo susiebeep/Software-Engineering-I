@@ -87,9 +87,21 @@ app.post('/createAccount', function(req, res) {
     });
 });
 
-
+//FIXME
+//Commented out query until jobs table is added to mySQL
 app.get('/view-jobs', function(request, response) {
-    response.render('view-jobs');
+/*  var callbackCount = 0;
+    var context = {};
+    var mysql = req.app.get('mysql');
+    var sql = "SELECT * from Jobs"
+    connection.query(sql, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }
+        context.jobs = results[0];
+        }) */
+	response.render('view-jobs'/*, context*/);
 });
 
 

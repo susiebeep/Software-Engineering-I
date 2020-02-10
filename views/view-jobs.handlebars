@@ -1,4 +1,36 @@
 <h1>Open Jobs</h1>
 
-
-
+<table>
+	<thead>
+		<tr>
+			<th>Job ID</th>
+            <th>Date Posted</th>
+            <th>Title</th>
+            <th>Category ID</th>
+            <th>Date of Job</th>
+            <th>Location</th>
+            <th>Details</th>
+            <th>Owner ID</th>
+            <th>Emp ID</th>
+            <th>Owner Rating</th>
+            <th>Rating Details</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each authors}}
+			<tr>
+				<td>{{jobId}}</td>
+				<td>{{jobPostedDate}}</td>
+				<td>{{jobTitle}}</td>
+				<td>{{categoryId}}</td>
+				<td>{{jobExpectedCompletionDate}}</td>
+				<td>{{location}}</td>
+				<td>{{jobDetails}}</td>
+				<td>{{ownerId}}</td>
+				<td>{{employeeId}}</td>
+				<td>{{rating}}</td>
+				<td>{{ratingDetails}}</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>

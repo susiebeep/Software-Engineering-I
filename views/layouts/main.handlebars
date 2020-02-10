@@ -7,12 +7,20 @@
 </head>
 <body>
 
-    <div class="top">
-        TaskBunny
+    <div class="navigationBar">
+        <a class="topLevelLink" id="homeIcon" href="/">TaskBunny</a>
+        <div class="dropDownContainer">
+            <div class="dropDownHeader">Navigation</div>
+            <div class="dropDownContent">
+                <a href="/view-jobs">View Posted Jobs</a>
+                <a href="/">Edit href in main.handlebars</a>
+                <a href="/">Edit href in main.handlebars</a>
+            </div>
+        </div>
     </div>
 
     {{! Page Content }}
-    <div>
+    <div style="padding:20px;margin-top:10px;">
         {{{body}}}
     </div>
 
