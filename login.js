@@ -87,21 +87,18 @@ app.post('/createAccount', function(req, res) {
     });
 });
 
-//FIXME
-//Commented out query until jobs table is added to mySQL
+
 app.get('/view-jobs', function(request, response) {
-/*  var callbackCount = 0;
     var context = {};
-    var mysql = req.app.get('mysql');
     var sql = "SELECT * from Jobs"
-    connection.query(sql, function(error, results, fields){
+    connection.query(sql, function(error, results){
         if(error){
-            res.write(JSON.stringify(error));
-            res.end();
+            response.write(JSON.stringify(error));
+            response.end();
         }
-        context.jobs = results[0];
-        }) */
-	response.render('view-jobs'/*, context*/);
+        context.jobs = results;
+        response.render('view-jobs', context);
+        }) 
 });
 
 
