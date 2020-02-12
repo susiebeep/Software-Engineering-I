@@ -8,7 +8,6 @@
     </form>
 </div>
 
-
 <div class="create-account">
     <h1>Create Account</h1>
     <h2 id="success" style="display: none">Success</h2>
@@ -19,10 +18,18 @@
         <input type="submit">
     </form>
 </div>
+
 <script type="text/javascript">
     let path = window.location.href;
     console.log(path);
     if (path.indexOf("success=true") !== -1) {
         document.getElementById("success").style.display = "block";
     }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() { 
+        document.querySelector(".topLevelLink").style.visibility = "hidden";
+        document.querySelector(".dropDownContainer").style.visibility = "hidden";
+    })
 </script>
