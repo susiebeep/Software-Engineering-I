@@ -46,7 +46,7 @@ app.post('/auth', function(request, response) {
             if (results.length > 0) {
                 request.session.loggedin = true;
                 request.session.username = username;
-                request.session.userID = results[0].id;
+                request.session.userId = results[0].id;
                 response.redirect('/home');
             } else {
                 response.send('Incorrect Username and/or Password!');
@@ -72,14 +72,13 @@ app.get('/home', function(request, response) {
 app.get('/submit-job', function(request, response) {
   if (request.session.loggedin) {
       var username = request.session.username;
-      var userID = request.session.userID;
+      var userId = request.session.userId;
 
       // Get list of job categories.
       connection.query('SELECT * FROM JobsCategories', [], function(error, results, fields) {
         if (results.length > 0) {
-          console.log(results);
           var categories = results;
-          response.render('submit-job', {name: username, userID: userID, categories: categories});
+          response.render('submit-job', {name: username, userId: userId, categories: categories});
         } else {
             response.send('Failed to load page.');
         }
