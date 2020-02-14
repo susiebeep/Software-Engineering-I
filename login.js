@@ -42,7 +42,7 @@ app.post('/auth', function(request, response) {
     var username = request.body.username;
     var password = request.body.password;
     if (username && password) {
-        connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+        connection.query('SELECT * FROM Users WHERE userName = ? AND pword = ?', [username, password], function(error, results, fields) {
             if (results.length > 0) {
                 request.session.loggedin = true;
                 request.session.username = username;
@@ -94,7 +94,7 @@ app.post('/createAccount', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
     var mysql = req.app.get('mysql');
-    var sql = "INSERT INTO accounts (username, password, email) VALUES (?,?,?)";
+    var sql = "INSERT INTO Users (userName, pword, email) VALUES (?,?,?)";
     var inserts = [req.body.username, req.body.password, req.body.email];
     connection.query(sql,inserts,function(error, results, fields){
         if(error){
