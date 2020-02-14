@@ -123,6 +123,16 @@ app.get('/view-jobs', function(request, response) {
 });
 
 
+app.get('/review', function(request, response) {
+    if (request.session.loggedin) {
+        var context = request.session.username;
+        response.render('review');
+    } else {
+        response.send('Please login to view this page!');
+        response.end();
+    }
+});
+
 //boilerplate 404 code
 app.use(function(req,res){
     res.status(404);
