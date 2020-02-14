@@ -1,5 +1,4 @@
-
-<div class="login-form">
+  <div class="login-form">
     <h1>Login Form</h1>
     <form action="auth" method="POST">
         <input type="text" name="username" placeholder="Username" required>
@@ -7,7 +6,6 @@
         <input type="submit">
     </form>
 </div>
-
 
 <div class="create-account">
     <h1>Create Account</h1>
@@ -19,10 +17,18 @@
         <input type="submit">
     </form>
 </div>
+
 <script type="text/javascript">
     let path = window.location.href;
     console.log(path);
     if (path.indexOf("success=true") !== -1) {
         document.getElementById("success").style.display = "block";
     }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() { 
+        document.querySelector(".topLevelLink").style.visibility = "hidden";
+        document.querySelector(".dropDownContainer").style.visibility = "hidden";
+    })
 </script>
