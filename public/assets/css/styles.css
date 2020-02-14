@@ -17,6 +17,12 @@ table {
 	width: 98%;
 }
 
+img {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;	
+}	
+
 
 /*******************************************************************************
 ** Section: Log in and Account Creation
