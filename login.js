@@ -102,7 +102,7 @@ app.post('/submit-job', function(req,res){
 	var jobDetail = req.body.jobDetails
 
 	var mysql = req.app.get('mysql');
-	var sql = "INSERT INTO Submission (ownerID, jobPostedDate, jobTitle, categoryId, completionDate, genLocation, jobDetail) VALUES (?,?,?,?,?,?,?)";
+	var sql = "INSERT INTO Jobs (ownerID, jobPostedDate, jobTitle, categoryId, completionDate, genLocation, jobDetail) VALUES (?,?,?,?,?,?,?)";
 	
 	var inserts = [ownerId, jobPostedDate, jobTitle, jobCategory, completionDate, genLocation, jobdetail];
 
