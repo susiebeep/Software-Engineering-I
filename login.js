@@ -92,7 +92,7 @@ app.get('/submit-job', function(request, response) {
   }
 });
 
-app.post('/submit-job', function(req,res)){
+app.post('/submit-job', function(req,res){
 	var ownerId = req.body.ownerId
 	var jobPostedDate = req.body.jobPostedDate
 	var jobTitle = req.body.jobTitle
@@ -100,7 +100,23 @@ app.post('/submit-job', function(req,res)){
 	var completionDate = req.body.jobExpectedCompletionDate
 	var genLocation = req.body.location
 	var jobDetail = req.body.jobDetails
-}
+
+	var mysql = req.app.get('mysql');
+	var sql = "INSERT INTO Submission (ownerID, jobPostedDate, jobTitle, categoryId, completionDate, genLocation, jobDetail) VALUES (?,?,?,?,?,?,?)";
+	
+	var inserts = [ownerId, jobPostedDate, jobTitle, jobCategory, completionDate, genLocation, jobdetail];
+
+	connection.query(sql,inserts,function(error,res,field){
+		if(error){
+			console.log(JSON.stringify(error));
+			res.write(JSON.stringify(error));
+			res.end();
+		}
+		else{
+			res.redirect('/?success=true');
+		}
+	});
+});
 
 app.post('/createAccount', function(req, res) {
     var username = req.body.username;
