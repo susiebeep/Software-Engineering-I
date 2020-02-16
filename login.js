@@ -92,6 +92,16 @@ app.get('/submit-job', function(request, response) {
   }
 });
 
+app.post('/submit-job', function(req,res)){
+	var ownerId = req.body.ownerId
+	var jobPostedDate = req.body.jobPostedDate
+	var jobTitle = req.body.jobTitle
+	var jobCategory = req.body.categoryId
+	var completionDate = req.body.jobExpectedCompletionDate
+	var genLocation = req.body.location
+	var jobDetail = req.body.jobDetails
+}
+
 app.post('/createAccount', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
