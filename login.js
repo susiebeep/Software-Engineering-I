@@ -150,7 +150,7 @@ app.get('/view-jobs', function(request, response) {
         }) 
 });
 
-//need to complete 
+
 app.get('/review', function(request, response) {
     if (request.session.loggedin) {
 		var context = {};
@@ -168,6 +168,25 @@ app.get('/review', function(request, response) {
         response.send('Please login to view this page!');
         response.end();
     }
+});
+
+app.post('/review', function(req,res){
+	var user = 	req.body.userList
+	var rating = req.body.rating
+	
+	var mysql = req.app.get('mysql');
+	var sql = "UPDATE Users SET rating = " + rating + " WHERE customerId = " + user;
+
+	connection.query(sql,function(error,result,field){
+		if(error){
+			console.log(JSON.stringify(error));
+			res.write(JSON.stringify(error));
+			res.end();
+		}
+		else{
+			res.redirect('/home');
+		}
+	});
 });
 
 
