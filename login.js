@@ -150,7 +150,7 @@ app.get('/view-jobs', function(request, response) {
         }) 
 });
 
-
+//need to complete 
 app.get('/review', function(request, response) {
     if (request.session.loggedin) {
 		var context = {};
@@ -169,6 +169,7 @@ app.get('/review', function(request, response) {
         response.end();
     }
 });
+
 
 //boilerplate 404 code
 app.use(function(req,res){
