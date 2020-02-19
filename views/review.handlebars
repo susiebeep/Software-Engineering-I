@@ -1,5 +1,20 @@
 <h1>Review a Worker</h1>
-<h3>Select Worker: </h3>
+<form>
+       <fieldset>
+          <legend><h3>Select Worker: </h3></legend>
+          <p>
+             <label>Username </label>
+             <select name = "userList">
+               <option style="display:none"></option>
+			   {{#each user}}
+					<option value = '{{this.customerId}}'>{{this.userName}}</option>
+               {{/each}}
+             </select>
+          </p>
+       </fieldset>
+    </form>
+
+
 <h3>Rating: </h3>
 <br>
 <h2>Upload a picture of their work!</h2>

@@ -153,8 +153,19 @@ app.get('/view-jobs', function(request, response) {
 
 app.get('/review', function(request, response) {
     if (request.session.loggedin) {
-        var context = request.session.username;
-        response.render('review');
+		var context = {};
+		var sql = "SELECT * from Users"
+        //var context = request.session.username;
+		
+		connection.query(sql, function(error, results){
+        if(error){
+            response.write(JSON.stringify(error));
+            response.end();
+        }
+        context.user = results;
+        response.render('review', context);
+        }) 
+
     } else {
         response.send('Please login to view this page!');
         response.end();
