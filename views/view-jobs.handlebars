@@ -14,6 +14,7 @@
             <th>Emp ID</th>
             <th>Owner Rating</th>
             <th>Rating Details</th>
+			<th>Submit Bid</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,6 +31,7 @@
 				<td>{{employeeId}}</td>
 				<td>{{rating}}</td>
 				<td>{{ratingDetails}}</td>
+				<td><a href="/view-jobs/{{jobId}}">Submit</a></td>
 			</tr>
 		{{/each}}
 	</tbody>

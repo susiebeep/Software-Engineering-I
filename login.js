@@ -151,6 +151,35 @@ app.get('/view-jobs', function(request, response) {
 });
 
 
+app.get('/view-jobs/:jobId', function(req, res, next){
+    var context = {};
+    var sql = "SELECT * from Jobs WHERE jobId = ?";
+    var inserts = [req.params.jobId];
+    connection.query(sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }
+        context.job = results[0];
+        res.render('submit-bid', context);
+    });
+});
+
+
+app.post('/view-jobs', function(req, res){
+    var sql = "INSERT into Bids (price, comments, completionEst, vendorId, jobId) VALUES (?,?,?,?,?)";
+    var inserts = [req.body.bidPrice, req.body.bidComments, req.body.bidCompletionDate, req.body.bidVendorId, req.body.bidJobId];
+    connection.query(sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }
+        else{
+            res.render('bid-success');
+        }
+    });
+});
+
 app.get('/review', function(request, response) {
     if (request.session.loggedin) {
 		var context = {};

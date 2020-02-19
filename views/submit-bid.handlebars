@@ -1,0 +1,60 @@
+<h1>Submit bid</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Job ID</th>
+            <th>Date Posted</th>
+            <th>Title</th>
+            <th>Category ID</th>
+            <th>Date of Job</th>
+            <th>Location</th>
+            <th>Details</th>
+            <th>Owner ID</th>
+            <th>Emp ID</th>
+            <th>Owner Rating</th>
+            <th>Rating Details</th>
+		</tr>
+	</thead>
+	<tbody>
+			<tr>
+				<td>{{job.jobId}}</td>
+				<td>{{job.jobPostedDate}}</td>
+				<td>{{job.jobTitle}}</td>
+				<td>{{job.categoryId}}</td>
+				<td>{{job.jobExpectedCompletionDate}}</td>
+				<td>{{job.location}}</td>
+				<td>{{job.jobDetails}}</td>
+				<td>{{job.ownerId}}</td>
+				<td>{{job.employeeId}}</td>
+				<td>{{job.rating}}</td>
+				<td>{{job.ratingDetails}}</td>
+			</tr>
+	</tbody>
+</table>
+
+
+<div id="bidForm">
+<form action="/view-jobs" method = "post" id="submit-bid">
+    <fieldset id="submitBidFieldset">
+        <legend ><b><u>Bid Info:</u></b></legend>
+            <p>
+                Bid Price: $ <input type="number" min="0.01" step="0.01" name="bidPrice"/>
+            </p>
+            <p>
+                Comments: <input type="text" name="bidComments">
+            </p>
+            <p>
+                Completion Date Estimate: <input type="date" name="bidCompletionDate">
+            </p>
+            <p>
+                Vendor ID: <input type="number" name="bidVendorId"> <!-- FIXME: figure out how to pull id of who is logged in -->
+            </p> 
+                <input type="hidden" name="bidJobId" value="{{job.jobId}}">
+
+            <input type="submit" value="Submit" id="submitBid"> 
+    </fieldset>
+</form>
+
+
+
+</div>
