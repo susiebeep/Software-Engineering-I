@@ -155,8 +155,6 @@ app.get('/review', function(request, response) {
     if (request.session.loggedin) {
 		var context = {};
 		var sql = "SELECT * from Users"
-        //var context = request.session.username;
-		
 		connection.query(sql, function(error, results){
         if(error){
             response.write(JSON.stringify(error));

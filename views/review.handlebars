@@ -1,27 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
 <h1>Review a Worker</h1>
-<form>
-       <fieldset>
-          <legend><h3>Select Worker: </h3></legend>
-          <p>
-             <label>Username </label>
-             <select name = "userList">
-               <option style="display:none"></option>
-			   {{#each user}}
-					<option value = '{{this.customerId}}'>{{this.userName}}</option>
-               {{/each}}
-             </select>
-          </p>
-       </fieldset>
-    </form>
 
+	<form action = "/insert" method = "post">	
+	<fieldset>
+		<legend><h3>Select Worker</h3></legend>
+		<p>
+		<label>Username </label>
+		<select name = "userList">
+		<option style="display:none"></option>
+			{{#each user}}
+		<option value = '{{this.customerId}}'>{{this.userName}}</option>
+		{{/each}}
+		</select>
+		</p>
 
-<h3>Rating: </h3>
-<br>
-<h2>Upload a picture of their work!</h2>
-<form action="/">
-  <label for="img"></label>
-  <input type="file" id="img" name="img" accept="image/*">
-  <input type="submit">
-</form>
+		<p>
+		Rating:
+		<br>
+		<input type="radio" name="rating" id="1" value="1">
+		<label for="1">1</label><br>
+
+		<input type="radio" name="rating" id="2" value="2">
+		<label for="2">2</label><br>
+
+		<input type="radio" name="rating" id="3" value="3">
+		<label for="3">3</label><br>
+
+		<input type="radio" name="rating" id="4" value="4">
+		<label for="4">4</label><br>
+
+		<input type="radio" name="rating" id="5" value="5">
+		<label for="5">5</label><br>
+		</p>
+
+		<p>
+		Rating Details:
+		<br>
+		<input type="text" id ="details">
+		</p>
+
+		<p>
+		Upload a picture of their work:
+		<br>
+		<label for="img"></label>
+		<input type="file" id="img" name="img" accept="image/*">
+		</p>
+		<br>
+		<input type="submit">
+    </fieldset>	
+</form>	
 
 </body>
+</html>
