@@ -202,10 +202,11 @@ app.get('/review', function(request, response) {
 app.post('/review', function(req,res){
 	var UserID = req.body.UserID;
 	var Rating = req.body.Rating;
+	var RatingDetails = req.body.RatingDetails;
 	
 	var mysql = req.app.get('mysql');
-	var sql = "INSERT into UserRatings (UserID, Rating) VALUES (?,?)";
-	var inserts = [req.body.UserID, req.body.Rating];
+	var sql = "INSERT into UserRatings (UserID, Rating, RatingDetails) VALUES (?,?,?) ON DUPLICATE KEY UPDATE Rating = " + Rating;
+	var inserts = [req.body.UserID, req.body.Rating, req.body.RatingDetails];
 	
 	connection.query(sql,inserts, function(error,result,field){
 		if(error){
