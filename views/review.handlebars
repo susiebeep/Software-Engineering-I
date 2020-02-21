@@ -8,7 +8,7 @@
 		<legend><h3>Select Worker</h3></legend>
 		<p>
 		<label>Username </label>
-		<select name = "userList">
+		<select name = "UserID">
 		<option style="display:none"></option>
 			{{#each user}}
 		<option value = '{{this.customerId}}'>{{this.userName}}</option>
@@ -19,26 +19,26 @@
 		<p>
 		Rating:
 		<br>
-		<input type="radio" name="rating" id="1" value="1">
+		<input type="radio" name="Rating" id="1" value="1">
 		<label for="1">1</label><br>
 
-		<input type="radio" name="rating" id="2" value="2">
+		<input type="radio" name="Rating" id="2" value="2">
 		<label for="2">2</label><br>
 
-		<input type="radio" name="rating" id="3" value="3">
+		<input type="radio" name="Rating" id="3" value="3">
 		<label for="3">3</label><br>
 
-		<input type="radio" name="rating" id="4" value="4">
+		<input type="radio" name="Rating" id="4" value="4">
 		<label for="4">4</label><br>
 
-		<input type="radio" name="rating" id="5" value="5">
+		<input type="radio" name="Rating" id="5" value="5">
 		<label for="5">5</label><br>
 		</p>
 
 		<p>
 		Rating Details:
 		<br>
-		<input type="text" id ="details">
+		<input type="text" id ="Details">
 		</p>
 
 		<p>

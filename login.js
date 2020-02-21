@@ -200,13 +200,14 @@ app.get('/review', function(request, response) {
 });
 
 app.post('/review', function(req,res){
-	var user = req.body.userList
-	var rating = req.body.rating
+	var UserID = req.body.UserID;
+	var Rating = req.body.Rating;
 	
 	var mysql = req.app.get('mysql');
-	var sql = "UPDATE Users SET rating = " + rating + " WHERE customerId = " + user;
-
-	connection.query(sql,function(error,result,field){
+	var sql = "INSERT into UserRatings (UserID, Rating) VALUES (?,?)";
+	var inserts = [req.body.UserID, req.body.Rating];
+	
+	connection.query(sql,inserts, function(error,result,field){
 		if(error){
 			console.log(JSON.stringify(error));
 			res.write(JSON.stringify(error));
