@@ -27,9 +27,11 @@
     } else if (path.indexOf("error=")) {
         let arrayOfStrings = path.split("error=");
         let errorMessageWithHtml = arrayOfStrings[1];
-        let errorMessage = decodeURI(errorMessageWithHtml);
-        document.getElementById("error").style.display = "block";
-        document.getElementById("error").innerText = errorMessage;
+        if (errorMessageWithHtml !== undefined) {
+            let errorMessage = decodeURI(errorMessageWithHtml);
+            document.getElementById("error").style.display = "block";
+            document.getElementById("error").innerText = errorMessage;
+        }
     }
 </script>
 
