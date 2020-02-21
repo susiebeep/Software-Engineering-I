@@ -210,7 +210,7 @@ app.post('/review', function(req,res){
 	var RatingDetails = req.body.RatingDetails;
 	
 	var mysql = req.app.get('mysql');
-	var sql = "INSERT into UserRatings (UserID, Rating, RatingDetails) VALUES (?,?,?);
+	var sql = "INSERT into UserRatings (UserID, Rating, RatingDetails) VALUES (?,?,?)";
 	var inserts = [req.body.UserID, req.body.Rating, req.body.RatingDetails];
 	
 	connection.query(sql,inserts, function(error,result,field){
