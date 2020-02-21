@@ -200,7 +200,7 @@ app.get('/review', function(request, response) {
 });
 
 app.post('/review', function(req,res){
-	var user = 	req.body.userList
+	var user = req.body.userList
 	var rating = req.body.rating
 	
 	var mysql = req.app.get('mysql');
