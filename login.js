@@ -126,9 +126,14 @@ app.post('/createAccount', function(req, res) {
     var inserts = [req.body.username, req.body.password, req.body.email];
     connection.query(sql,inserts,function(error, results, fields){
         if(error){
+            let message = "Error";
+            if (error.code === "ER_DUP_ENTRY") {
+                message = "User already exists"
+            }
             console.log(JSON.stringify(error))
-            res.write(JSON.stringify(error));
-            res.end();
+            res.redirect('/?error='+message);
+            // res.write(JSON.stringify(error));
+            // res.end();
         }else{
 
             res.redirect('/?success=true');
@@ -205,7 +210,7 @@ app.post('/review', function(req,res){
 	var RatingDetails = req.body.RatingDetails;
 	
 	var mysql = req.app.get('mysql');
-	var sql = "INSERT into UserRatings (UserID, Rating, RatingDetails) VALUES (?,?,?) ON DUPLICATE KEY UPDATE Rating = " + Rating;
+	var sql = "INSERT into UserRatings (UserID, Rating, RatingDetails) VALUES (?,?,?)";
 	var inserts = [req.body.UserID, req.body.Rating, req.body.RatingDetails];
 	
 	connection.query(sql,inserts, function(error,result,field){
