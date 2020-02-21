@@ -48,7 +48,7 @@ app.post('/auth', function(request, response) {
             if (results.length > 0) {
                 request.session.loggedin = true;
                 request.session.username = username;
-                request.session.userId = results[0].id;
+                request.session.userId = results[0].customerId;
                 response.redirect('/home');
             } else {
                 response.send('Incorrect Username and/or Password!');
@@ -93,27 +93,27 @@ app.get('/submit-job', function(request, response) {
 });
 
 app.post('/submit-job', function(req,res){
-	var ownerId = req.body.ownerId
-	var jobPostedDate = req.body.jobPostedDate
-	var jobTitle = req.body.jobTitle
-	var jobCategory = req.body.categoryId
-	var completionDate = req.body.jobExpectedCompletionDate
-	var genLocation = req.body.location
-	var jobDetail = req.body.jobDetails
+	var ownerId = req.body.ownerId;
+	var jobPostedDate = req.body.jobPostedDate;
+	var jobTitle = req.body.jobTitle;
+	var jobCategory = req.body.categoryId;
+	var completionDate = req.body.jobExpectedCompletionDate;
+	var genLocation = req.body.location;
+	var jobDetails = req.body.jobDetails;
 
 	var mysql = req.app.get('mysql');
 	var sql = "INSERT INTO Jobs (ownerID, jobPostedDate, jobTitle, categoryId, jobExpectedCompletionDate, location, jobDetails) VALUES (?,?,?,?,?,?,?)";
 	
-	var inserts = [ownerId, jobPostedDate, jobTitle, jobCategory, completionDate, genLocation, jobdetail];
+	var inserts = [ownerId, jobPostedDate, jobTitle, jobCategory, completionDate, genLocation, jobDetails];
 
-	connection.query(sql,inserts,function(error,res,field){
+
+	connection.query(sql, inserts, function(error, results, fields){
 		if(error){
-			console.log(JSON.stringify(error));
 			res.write(JSON.stringify(error));
 			res.end();
 		}
 		else{
-			res.redirect('/?success=true');
+			res.render('submit-job-success');
 		}
 	});
 });

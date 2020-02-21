@@ -1,21 +1,21 @@
 <h1>Submit a Job You'd Like Completed</h1>
 
-<form action="/insert"
+<form action="/submit-job"
 	method="post"
 	id="insertJob">
 	<fieldset>
 		<legend ><b>Job Details:</b></legend>
-		<p>
-			ownerId: <input type='number' id='ownerId' value={{userId}} required>
+		<p hidden='true'>
+			ownerId: <input type='number' id='ownerId' name='ownerId' value={{userId}} required>
+		</p>
+		<p hidden='true'>
+			jobPostedDate: <input type='date' id='jobPostedDate' name='jobPostedDate' required>
 		</p>
 		<p>
-			jobPostedDate: <input type='date' id='jobPostedDate' required>
+			Job Title: <input type='text' id='jobTitle' name='jobTitle' maxlength='45' size='45' required>
 		</p>
 		<p>
-			Job Title: <input type='text' id='jobTitle' maxlength='45' size='45' required>
-		</p>
-		<p>
-			Job Category: <select name='categoryId'>
+			Job Category: <select id='categoryId' name='categoryId'>
 				<option style="display:none"></option>
 				{{#each categories}}
 					<option value='{{categoryId}}'>{{category}}</option>
@@ -23,16 +23,16 @@
 			</select>
 		</p>
 		<p>
-			Desired Completion Date: <input type='date' id='jobExpectedCompletionDate'>
+			Desired Completion Date: <input type='date' id='jobExpectedCompletionDate' name='jobExpectedCompletionDate'>
 		</p>
 		<p>
-			Location (address or general description): <input type='text' id='location' maxlength='90' size='90'>
+			Location (address or general description): <input type='text' id='location' name='location' maxlength='90' size='90'>
 		</p>
 		<p>
 			Details:
 		</p>
 		<p>
-			<textarea id='jobDetails' maxlength='255' rows='4' cols='90'></textarea>
+			<textarea id='jobDetails' name='jobDetails' maxlength='255' rows='4' cols='90'></textarea>
 		</p>
 		<input type='submit' value='Submit' id="insertJob">
 	</fieldset>
