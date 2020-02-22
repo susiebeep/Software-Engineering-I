@@ -3,10 +3,9 @@
 <table>
 	<thead>
 		<tr>
-			<th>Job ID</th>
+	    <th>Job ID</th>
             <th>Bid ID</th>
             <th>Vendor ID</th>
-            <th>Job ID</td>
             <th>Price</th>
             <th>Comments</th>
             <th>Completion Estimation Date</th>
@@ -15,11 +14,11 @@
 	<tbody>
 		{{#each bids}}
 			<tr>
+				<td>{{jobId}}</td>
 				<td>{{bidId}}</td>
 				<td>{{vendorId}}</td>
-				<td>{{jobId}}</td>
 				<td>{{price}}</td>
-        <td>{{comments}}</td>
+        			<td>{{comments}}</td>
 				<td>{{printDate completionEst}}</td>
 			</tr>
 		{{/each}}
