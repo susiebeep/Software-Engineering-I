@@ -30,10 +30,22 @@ app.use('/static', express.static('./public'));
 
 // Include express-handlebars, set it as the default engine for interpreting
 // .handlebars files, and set the assumed file type to .handlebars.
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+var handlebars = require('express-handlebars').create({
+	// helper definition format based on R.A. Lucas's sample code on "TypeError: Handlebars.registerHelper is not a function"
+	// https://stackoverflow.com/questions/33979051/typeerror-handlebars-registerhelper-is-not-a-function.
+	helpers: {
+		printDate: function (date) {
+			if (date != null) {
+				return date.toLocaleDateString("en-US");
+			} else {
+				return null;
+			}
+		}
+	},
+	defaultLayout:'main'
+	});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-
 
 app.get('/', function(request, response) {
     response.render('login');
@@ -155,6 +167,19 @@ app.get('/view-jobs', function(request, response) {
         }) 
 });
 
+app.get('/your-jobs', function(request, response) {
+	var context = {};
+	var sql = "SELECT * from Jobs WHERE ownerId=?";
+	var inserts = [request.session.userId];
+	connection.query(sql, inserts, function(error, results, fields){
+		if(error){
+			response.write(JSON.stringify(error));
+			response.end();
+		}
+		context.jobs = results;
+		response.render('your-jobs', context);
+	});
+});
 
 app.get('/view-jobs/:jobId', function(req, res, next){
     var context = {};
