@@ -61,10 +61,12 @@ app.post('/auth', function(request, response) {
                 request.session.loggedin = true;
                 request.session.username = username;
                 request.session.userId = results[0].customerId;
+
                 response.redirect('/home');
             } else {
                 response.send('Incorrect Username and/or Password!');
             }
+
             response.end();
         });
     } else {
@@ -75,8 +77,14 @@ app.post('/auth', function(request, response) {
 
 app.get('/home', function(request, response) {
     if (request.session.loggedin) {
-        var context = request.session.username;
-        response.render('home', {name: context});
+        var username = request.session.username;
+
+        connection.query("select avg(Rating) as average from UserRatings where UserID = ?", [request.session.userId], function (error, results, fields) {
+            var average = results[0].average;
+            if (average === undefined || average === null) average = "No ratings logged";
+            response.render('home', {name: username, average: average});
+        })
+
     } else {
         response.send('Please login to view this page!');
         response.end();
