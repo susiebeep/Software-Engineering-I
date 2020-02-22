@@ -203,6 +203,26 @@ app.get('/view-jobs/:jobId', function(req, res, next){
     });
 });
 
+app.get('/view-bids/:jobId', function(req, res, next){
+  var context = {};
+  var sql = ""
+  var bidsTable = "SELECT * FROM Bids"
+  var vendorsTable = " LEFT JOIN Users ON Bids.vendorId=Users.customerId";
+  var whereClause = " WHERE jobId = ?";
+  var sortClause = " ORDER BY price DESC";
+  var sql = sql.concat(bidsTable, vendorsTable, whereClause, sortClause);
+  console.log(sql);
+  var inserts = [req.params.jobId];
+  connection.query(sql, inserts, function(error, results, fields){
+      if(error){
+          res.write(JSON.stringify(error));
+          res.end();
+      }
+      console.log(results);
+      context.bids = results;
+      res.render('view-bids', context);
+  });
+});
 
 app.post('/view-jobs', function(req, res){
     var sql = "INSERT into Bids (price, comments, completionEst, vendorId, jobId) VALUES (?,?,?,?,?)";
