@@ -152,8 +152,6 @@ app.post('/createAccount', function(req, res) {
             }
             console.log(JSON.stringify(error))
             res.redirect('/?error='+message);
-            // res.write(JSON.stringify(error));
-            // res.end();
         }else{
 
             res.redirect('/?success=true');
@@ -211,14 +209,12 @@ app.get('/view-bids/:jobId', function(req, res, next){
   var whereClause = " WHERE jobId = ?";
   var sortClause = " ORDER BY price DESC";
   var sql = sql.concat(bidsTable, vendorsTable, whereClause, sortClause);
-  console.log(sql);
   var inserts = [req.params.jobId];
   connection.query(sql, inserts, function(error, results, fields){
       if(error){
           res.write(JSON.stringify(error));
           res.end();
       }
-      console.log(results);
       context.bids = results;
       res.render('view-bids', context);
   });
